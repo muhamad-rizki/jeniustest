@@ -46,7 +46,7 @@ const Header = (props: Props) => {
       {
         leftComponent
           ? (
-            <View style={{ flex: 0.2, justifyContent: 'flex-start' }}>
+            <View style={{ flex: 0.2, justifyContent: 'flex-start', alignItems: 'flex-start' }}>
               <View style={{ width: HeaderHeight, height: HeaderHeight }}>
                 {leftComponent}
               </View>
@@ -81,7 +81,7 @@ const Header = (props: Props) => {
       {
         rightComponent
           ? (
-            <View style={{ flex: 0.2, justifyContent: 'flex-end' }}>
+            <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
               <View style={{ width: HeaderHeight, height: HeaderHeight }}>
                 {rightComponent}
               </View>
