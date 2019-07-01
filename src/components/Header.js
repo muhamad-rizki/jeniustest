@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   Text,
   Image,
 } from 'react-native';
@@ -11,13 +10,28 @@ import { colors } from '../styles';
 
 type Props = {
   icon: Object,
+  leftComponent?: React.Component,
   rightComponent?: React.Component,
 }
 
 const HeaderHeight = 60;
 
+const calculateFlex = (leftComponent, rightComponent) => {
+  if (leftComponent && rightComponent) {
+    return 0.6;
+  }
+  if (leftComponent || rightComponent) {
+    return 0.8;
+  }
+  return 1;
+};
+
 const Header = (props: Props) => {
-  const { icon, rightComponent } = props;
+  const {
+    icon,
+    rightComponent,
+    leftComponent,
+  } = props;
   return (
     <View
       style={{
@@ -29,36 +43,59 @@ const Header = (props: Props) => {
         flexDirection: 'row',
       }}
     >
+      {
+        leftComponent
+          ? (
+            <View style={{ flex: 0.2, justifyContent: 'flex-start' }}>
+              <View style={{ width: HeaderHeight, height: HeaderHeight }}>
+                {leftComponent}
+              </View>
+            </View>
+          )
+          : null
+      }
       <View
-        style={{
-          width: 60,
-          height: 60,
-          padding: 12,
-        }}
+        style={[
+          { flex: calculateFlex(leftComponent, rightComponent), alignItems: 'center', flexDirection: 'row' },
+          leftComponent ? { justifyContent: 'center' } : null
+        ]}
       >
-        <Image
-          source={icon}
+        <View
           style={{
-            width: '100%',
-            height: '100%',
-            resizeMode: 'contain',
+            width: 60,
+            height: 60,
+            padding: 12,
           }}
-        />
-      </View>
-      <View style={{ flex: 0.8, justifyContent: 'center' }}>
+        >
+          <Image
+            source={icon}
+            style={{
+              width: '100%',
+              height: '100%',
+              resizeMode: 'contain',
+            }}
+          />
+        </View>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LayarKaca21</Text>
       </View>
-      <View style={{ flex: 0.2, justifyContent: 'center' }}>
-        {rightComponent}
-      </View>
+      {
+        rightComponent
+          ? (
+            <View style={{ flex: 0.2, justifyContent: 'flex-end' }}>
+              <View style={{ width: HeaderHeight, height: HeaderHeight }}>
+                {rightComponent}
+              </View>
+            </View>
+          )
+          : null
+      }
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
-
 Header.defaultProps = {
-  rightComponent: <View />,
+  rightComponent: null,
+  leftComponent: null,
 };
 
 export default Header;
