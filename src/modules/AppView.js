@@ -5,8 +5,8 @@ import Navigator from './navigation/Navigator';
 import { colors } from '../styles';
 
 export default function AppView() {
-  StatusBar.setTranslucent(true);
-  StatusBar.setBackgroundColor('transparent');
-  StatusBar.setBarStyle(colors.statusBarStyle, true);
+  // StatusBar.setTranslucent(true);
+  // StatusBar.setBackgroundColor('transparent');
+  // StatusBar.setBarStyle(colors.statusBarStyle, true);
   return <Navigator onNavigationStateChange={() => { }} uriPrefix="/app" />;
 }
