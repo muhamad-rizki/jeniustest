@@ -18,7 +18,7 @@
   [GMSServices provideAPIKey:@"AIzaSyDYxhBxnQXkTfWN2MeNZtBwKK2JJZqbN5w"]; // add this line using the api key obtained from Google Console
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"RNNKickStarter"
+                                                   moduleName:@"simplecontactapp"
                                             initialProperties:nil];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];

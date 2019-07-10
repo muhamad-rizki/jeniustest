@@ -1,4 +1,4 @@
-package com.rnnkickstarter;
+package id.simple.contactapp;
 
 import android.app.Application;
 

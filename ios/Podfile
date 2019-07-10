@@ -4,7 +4,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 # Change 'AirMapsExplorer' to match the target in your Xcode project.
-target 'RNNKickStarter' do
+target 'simplecontactapp' do
   rn_path = '../node_modules/react-native' # This path is likely to be `../node_modules/react-native` in your own project.
   rn_maps_path = '../node_modules/react-native-maps' # This path is likely to be `../node_modules/react-native-maps` in your own project.
 
