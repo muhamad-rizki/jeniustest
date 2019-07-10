@@ -6,7 +6,6 @@ import { Icon } from '../../components';
 import { colors, fonts } from '../../styles';
 import SplashScreenViewContainer from '../splashScreen/SplashScreenViewContainer';
 import AuthenticationViewContainer from '../authentication/AuthenticationViewContainer';
-import WelcomeScreenViewContainer from '../welcomeScreen/WelcomeScreenViewContainer';
 
 let currentIndex = 0;
 
@@ -24,12 +23,6 @@ const stackNavigator = createStackNavigator(
         header: null,
       }
     },
-    WelcomeScreen: {
-      screen: WelcomeScreenViewContainer,
-      navigationOptions: {
-        header: null,
-      }
-    }
   },
   {
     transitionConfig: (sceneProps) => {
