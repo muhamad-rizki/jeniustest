@@ -1,18 +1,19 @@
 import Invoke from './Invoke';
-import { API_KEY, BASE_URL_V3 } from '../env';
+import { BASE_URL } from '../env';
 
 export default class InvokeHelper {
-  constructor(token, region) {
+  constructor(token) {
     this.api = new Invoke();
     this.token = token;
-    this.region = !region ? 'ID' : region;
   }
 
-  setRegion = (region) => {
-    this.region = region;
-  }
+  getContacts = () => this.api.get(`${BASE_URL}/contact`);
 
-  getConfiguration = () => this.api.get(`${BASE_URL_V3}configuration?api_key=${API_KEY}`);
+  getContactById = id => this.api.get(`${BASE_URL}/contact/${id}`);
 
-  getNowPlayingMovies = page => this.api.get(`${BASE_URL_V3}movie/now_playing?region=${this.region}&page=${!page ? 1 : page}&api_key=${API_KEY}`);
+  deleteContact = id => this.api.delete(`${BASE_URL}/contact/${id}`);
+
+  editContact = (id, data) => this.api.put(`${BASE_URL}/contact/${id}`, data);
+
+  addContact = data => this.api.post(`${BASE_URL}/contact`, data);
 }
