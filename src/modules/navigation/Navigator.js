@@ -5,7 +5,7 @@ import { fadeIn, fadeOut } from 'react-navigation-transitions';
 import { Icon } from '../../components';
 import { colors, fonts } from '../../styles';
 import SplashScreenViewContainer from '../splashScreen/SplashScreenViewContainer';
-import AuthenticationViewContainer from '../authentication/AuthenticationViewContainer';
+import ContactlistViewContainer from '../contactlist/ContactlistViewContainer';
 
 let currentIndex = 0;
 
@@ -17,8 +17,8 @@ const stackNavigator = createStackNavigator(
         header: null,
       }
     },
-    Authentication: {
-      screen: AuthenticationViewContainer,
+    ContactList: {
+      screen: ContactlistViewContainer,
       navigationOptions: {
         header: null,
       }

@@ -9,6 +9,6 @@ type Props = {};
 
 export default (props: Props) => (
   <View flex centerV centerH>
-    <Text>Authentication View</Text>
+    <Text>Contactlist View</Text>
   </View>
 );

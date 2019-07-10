@@ -19,7 +19,7 @@ export default compose(
     componentDidMount() {
       const { navigation } = this.props;
       setTimeout(() => {
-        ResetNavigator(navigation, 'Authentication');
+        ResetNavigator(navigation, 'ContactList');
       }, 3500);
     },
   }),
