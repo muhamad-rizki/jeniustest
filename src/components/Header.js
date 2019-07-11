@@ -12,9 +12,12 @@ type Props = {
   icon: Object,
   leftComponent?: React.Component,
   rightComponent?: React.Component,
+  title: string,
+  color: string,
+  textColor: string,
 }
 
-const HeaderHeight = 60;
+const HeaderHeight = 56;
 
 const calculateFlex = (leftComponent, rightComponent) => {
   if (leftComponent && rightComponent) {
@@ -31,6 +34,9 @@ const Header = (props: Props) => {
     icon,
     rightComponent,
     leftComponent,
+    title,
+    color,
+    textColor,
   } = props;
   return (
     <View
@@ -41,6 +47,7 @@ const Header = (props: Props) => {
         borderBottomColor: colors.lightGray,
         justifyContent: 'center',
         flexDirection: 'row',
+        backgroundColor: color,
       }}
     >
       {
@@ -60,23 +67,7 @@ const Header = (props: Props) => {
           leftComponent ? { justifyContent: 'center' } : null
         ]}
       >
-        <View
-          style={{
-            width: 60,
-            height: 60,
-            padding: 12,
-          }}
-        >
-          <Image
-            source={icon}
-            style={{
-              width: '100%',
-              height: '100%',
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LayarKaca21</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 16, color: textColor }}>{title}</Text>
       </View>
       {
         rightComponent
