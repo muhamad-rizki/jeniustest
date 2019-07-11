@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation';
 import ContactlistView from './ContactlistView';
 import InvokeHelper from '../../components/InvokeHelper';
 import { setLoading, setError, setData } from './ContactlistState';
+import { loadContactAdd, resetContactAdd } from '../contactadd/ContactaddState';
 
 export default compose(
   connect(
@@ -27,7 +28,15 @@ export default compose(
             dispatch(setLoading(false));
           });
       },
-      openAdd: () => navigation.dispatch(NavigationActions.navigate({ routeName: 'ContactAdd' })),
+      openAdd: () => {
+        dispatch(resetContactAdd());
+        navigation.dispatch(NavigationActions.navigate({ routeName: 'ContactAdd' }));
+      },
+      openDetail: (item) => {
+        dispatch(resetContactAdd());
+        dispatch(loadContactAdd(item));
+        navigation.dispatch(NavigationActions.navigate({ routeName: 'ContactAdd', params: { view: item } }));
+      },
     }),
   ),
   lifecycle({

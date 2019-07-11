@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 let lastChar = '';
 
-const renderItem = ({ item, index }) => {
+const renderItem = (openDetail, { item, index }) => {
   const name = `${item.firstName} ${item.lastName}`;
   let header = false;
   if (lastChar.toLowerCase() !== item.firstName.charAt(0).toLowerCase()) {
@@ -43,7 +43,7 @@ const renderItem = ({ item, index }) => {
           ? <Text marginV-8 marginL-16>{item.firstName.charAt(0).toUpperCase()}</Text>
           : null
       }
-      <TouchableNativeFeedback onPress={() => { }}>
+      <TouchableOpacity onPress={() => openDetail(item)} activeOpacity={0.9}>
         <View
           row
           centerV
@@ -61,7 +61,7 @@ const renderItem = ({ item, index }) => {
             <Text>{name}</Text>
           </View>
         </View>
-      </TouchableNativeFeedback>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -73,6 +73,7 @@ export default (props: Props) => {
     data,
     loadContacts,
     openAdd,
+    openDetail,
   } = props;
   return (
     <View flex>
@@ -89,7 +90,7 @@ export default (props: Props) => {
             ? (
               <FlatList
                 data={_.orderBy(data, [contact => contact.firstName.toLowerCase()], 'asc')}
-                renderItem={renderItem}
+                renderItem={item => renderItem(openDetail, item)}
                 keyExtractor={(item, index) => index.toString()}
                 refreshControl={<RefreshControl refreshing={loading} onRefresh={loadContacts} />}
               />

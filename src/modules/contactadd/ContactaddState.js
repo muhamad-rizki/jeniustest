@@ -28,6 +28,7 @@ export const ACTION_SET_ERRORS = 'ContactaddState/ACTION_SET_ERRORS';
 export const ACTION_SET_LOADING = 'ContactaddState/ACTION_SET_LOADING';
 export const ACTION_RESET_CONTACT = 'ContactaddState/ACTION_RESET_CONTACT';
 export const ACTION_LOAD_CONTACT = 'ContactaddState/ACTION_LOAD_CONTACT';
+export const ACTION_EDIT_CONTACT = 'ContactaddState/ACTION_EDIT_CONTACT';
 
 export function setContactFirstName(payload): ActionType {
   return {
@@ -72,12 +73,22 @@ export function resetContactAdd(): ActionType {
 
 export function loadContactAdd(payload): ActionType {
   return {
-    type: ACTION_RESET_CONTACT,
+    type: ACTION_LOAD_CONTACT,
     payload,
   };
 }
 
-export default function ContactaddStateReducer(state: ContactaddStateType = initialState, action: ActionType): ContactaddStateType {
+export function setEditMode(payload): ActionType {
+  return {
+    type: ACTION_EDIT_CONTACT,
+    payload,
+  };
+}
+
+export default function ContactaddStateReducer(
+  state: ContactaddStateType = initialState,
+  action: ActionType,
+): ContactaddStateType {
   switch (action.type) {
     case ACTION_SET_FIRST_NAME:
       return {
@@ -98,6 +109,11 @@ export default function ContactaddStateReducer(state: ContactaddStateType = init
       return {
         ...state,
         loading: action.payload,
+      };
+    case ACTION_EDIT_CONTACT:
+      return {
+        ...state,
+        editMode: action.payload,
       };
     case ACTION_SET_ERRORS:
       return {
