@@ -15,6 +15,7 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:orientation="vertical"
+      android:usesCleartextTraffic="true"
       android:theme="@style/AppTheme">
       <meta-data
         android:name="com.google.firebase.ml.vision.DEPENDENCIES"
