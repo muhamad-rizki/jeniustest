@@ -32,7 +32,7 @@ let lastChar = '';
 const renderItem = ({ item, index }) => {
   const name = `${item.firstName} ${item.lastName}`;
   let header = false;
-  if (lastChar !== item.firstName.charAt(0)) {
+  if (lastChar.toLowerCase() !== item.firstName.charAt(0).toLowerCase()) {
     lastChar = item.firstName.charAt(0);
     header = true;
   }
@@ -40,7 +40,7 @@ const renderItem = ({ item, index }) => {
     <View>
       {
         header
-          ? <Text marginV-8 marginL-16>{item.firstName.charAt(0)}</Text>
+          ? <Text marginV-8 marginL-16>{item.firstName.charAt(0).toUpperCase()}</Text>
           : null
       }
       <TouchableNativeFeedback onPress={() => { }}>
@@ -88,7 +88,7 @@ export default (props: Props) => {
           error === false
             ? (
               <FlatList
-                data={_.orderBy(data, ['firstName'], 'asc')}
+                data={_.orderBy(data, [contact => contact.firstName.toLowerCase()], 'asc')}
                 renderItem={renderItem}
                 keyExtractor={(item, index) => index.toString()}
                 refreshControl={<RefreshControl refreshing={loading} onRefresh={loadContacts} />}
