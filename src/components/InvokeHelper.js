@@ -13,7 +13,12 @@ export default class InvokeHelper {
 
   deleteContact = id => this.api.delete(`${BASE_URL}contact/${id}`);
 
-  editContact = (id, data) => this.api.put(`${BASE_URL}contact/${id}`, data);
-
-  addContact = data => this.api.post(`${BASE_URL}contact`, data);
+  upsertContact = (data) => {
+    if (data.id) {
+      const newData = Object.assign({}, data);
+      delete newData.id;
+      return this.api.put(`${BASE_URL}contact/${data.id}`, newData);
+    }
+    return this.api.post(`${BASE_URL}contact`, data);
+  }
 }
