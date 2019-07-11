@@ -48,6 +48,7 @@ export default compose(
         if (hasError) return !hasError;
         dispatch(setContactLoading(true));
         const newValues = Object.assign({}, values);
+        if (newValues.photo === '') delete newValues.photo;
         new InvokeHelper()
           .upsertContact(newValues)
           .then((response) => {
