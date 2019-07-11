@@ -6,6 +6,7 @@ import { Icon } from '../../components';
 import { colors, fonts } from '../../styles';
 import SplashScreenViewContainer from '../splashScreen/SplashScreenViewContainer';
 import ContactlistViewContainer from '../contactlist/ContactlistViewContainer';
+import ContactaddViewContainer from '../contactadd/ContactaddViewContainer';
 
 let currentIndex = 0;
 
@@ -19,6 +20,12 @@ const stackNavigator = createStackNavigator(
     },
     ContactList: {
       screen: ContactlistViewContainer,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    ContactAdd: {
+      screen: ContactaddViewContainer,
       navigationOptions: {
         header: null,
       }

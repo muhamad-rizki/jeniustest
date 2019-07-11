@@ -1,6 +1,7 @@
 // @flow
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 import ContactlistView from './ContactlistView';
 import InvokeHelper from '../../components/InvokeHelper';
@@ -25,7 +26,8 @@ export default compose(
             dispatch(setError(error));
             dispatch(setLoading(false));
           });
-      }
+      },
+      openAdd: () => navigation.dispatch(NavigationActions.navigate({ routeName: 'ContactAdd' })),
     }),
   ),
   lifecycle({
