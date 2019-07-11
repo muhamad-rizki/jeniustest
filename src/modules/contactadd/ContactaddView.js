@@ -63,7 +63,7 @@ export default (props: Props) => {
           }}
         >
           <Avatar
-            label="N"
+            label={AvatarHelper.getInitials(`${firstName} ${lastName}`)}
             size={80}
           />
         </View>
